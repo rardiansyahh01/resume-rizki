@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Resume Rizki</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    :root {
+      --bg: #f8f9fa;
+      --text: #212529;
+      --heading: #0d6efd;
+      --border: #dee2e6;
+      --card: #ffffff;
+    }
+
+    body.dark {
+      --bg: #121212;
+      --text: #e0e0e0;
+      --heading: #90caf9;
+      --border: #333;
+      --card: #1e1e1e;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      padding: 40px;
+      line-height: 1.6;
+      transition: all 0.3s ease;
+    }
+
+    header {
+      text-align: center;
+      padding-bottom: 20px;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 30px;
+    }
+
+    header h1 {
+      font-size: 36px;
+      color: var(--heading);
+    }
+
+    header p {
+      font-size: 18px;
+      color: var(--text);
+    }
+
+    section {
+      max-width: 700px;
+      margin: 0 auto 30px;
+      background: var(--card);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      color: var(--heading);
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 10px;
+      padding-bottom: 5px;
+      font-size: 22px;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .social-icons {
+      margin-top: 10px;
+    }
+
+    .social-icons a {
+      text-decoration: none;
+      color: var(--text);
+      margin-right: 15px;
+      font-size: 20px;
+      transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: var(--heading);
+    }
+
+    footer {
+      text-align: center;
+      color: var(--text);
+      font-size: 14px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    .buttons {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .buttons button {
+      margin: 5px;
+      padding: 10px 16px;
+      font-size: 14px;
+      cursor: pointer;
+      border: none;
+      border-radius: 6px;
+      background-color: var(--heading);
+      color: #fff;
+      transition: 0.2s;
+    }
+
+    .buttons button:hover {
+      opacity: 0.85;
+    }
+  </style>
+</head>
+<body>
+  <div class="buttons">
+    <button onclick="toggleTheme()">🌗 Toggle Light/Dark Mode</button>
+    <button onclick="window.print()">📄 Download PDF</button>
+    <button onclick="downloadWord()">📤 Download Word</button>
+  </div>
+
+  <header>
+    <h1>Rizki</h1>
+    <p>Trade | Programmer</p>
+  </header>
+
+  <section>
+    <h2>Deskripsi</h2>
+    <p>Gagigugego — Saya adalah seorang yang tertarik pada dunia programming dan trading. Terbiasa bekerja dengan logika dan ketelitian.</p>
+  </section>
+
+  <section>
+    <h2>Keahlian</h2>
+    <ul>
+      <li>Programming (HTML, CSS, JavaScript)</li>
+      <li>Trading (Basic Technical Analysis)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Pengalaman</h2>
+    <p><strong>DCC (Data Control Center)</strong><br/>Pernah menjadi DCC, bertanggung jawab mengelola data dan sistem komputer di lingkungan kerja.</p>
+  </section>
+
+  <section>
+    <h2>Pendidikan</h2>
+    <p>SMK (Sekolah Menengah Kejuruan)</p>
+  </section>
+
+  <section>
+    <h2>Kontak</h2>
+    <p>Email: asdadada@gmail.com</p>
+    <div class="social-icons">
+      <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Rizki. Dibuat dengan ❤️ | Light/Dark Mode + Export PDF/Word
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle("dark");
+    }
+
+    function downloadWord() {
+      const header = "<html xmlns:o='urn:schemas-microsoft-com:office:office' " +
+                     "xmlns:w='urn:schemas-microsoft-com:office:word' " +
+                     "xmlns='http://www.w3.org/TR/REC-html40'>" +
+                     "<head><meta charset='utf-8'><title>Resume Rizki</title></head><body>";
+      const footer = "</body></html>";
+      const content = document.body.innerHTML;
+      const sourceHTML = header + content + footer;
+
+      const source = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(sourceHTML);
+      const fileDownload = document.createElement("a");
+      document.body.appendChild(fileDownload);
+      fileDownload.href = source;
+      fileDownload.download = 'Resume_Rizki.doc';
+      fileDownload.click();
+      document.body.removeChild(fileDownload);
+    }
+  </script>
+</body>
+</html>
